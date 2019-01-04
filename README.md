@@ -16,7 +16,7 @@ npm run build
 
 ## 资产管理
 - 1. 资产注册
-![资产注册][(git_img/cmdb_pool.png)]
+![资产注册](git_img/cmdb_pool.png)
 - 2. 资产目录树
 ![资产目录树][(git_img/module_tree.png)]
 
@@ -28,6 +28,6 @@ npm run build
 
 ## 作业执行
 - 1. 作业管理
-![新建作业][(git_img/new_script.png)]
+![新建作业](git_img/new_script.png)
 - 2. 作业执行态与定时作业
 ![作业执行态与定时作业][(git_img/cron_execute.png)]
