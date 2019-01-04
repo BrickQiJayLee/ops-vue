@@ -12,6 +12,12 @@ npm run dev
 npm run build
 ```
 
+## Docker部署
+
+``` bash
+sh build_and_run.sh
+```
+
 # 基于element，django的一套自动化运维系统
 
 ## 资产管理
