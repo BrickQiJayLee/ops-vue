@@ -141,12 +141,12 @@
                 <el-form-item v-else label="节点名称">
                     <el-input v-model="addNodeName"></el-input>
                 </el-form-item>
-                <el-form-item v-if="is_add_root" label="选择app">
-                    <el-select v-model="addProductName" filterable placeholder="请选择">
+                <el-form-item v-if="is_add_root" label="选择业务">
+                    <el-select v-model="addProductId" filterable placeholder="请选择">
                         <el-option
                                 v-for="item in productList"
-                                :key="item.value"
-                                :label="item.lable"
+                                :key="item.label"
+                                :label="item.label"
                                 :value="item.value">
                         </el-option>
                     </el-select>
@@ -216,7 +216,7 @@
                 addProductName: '',
                 addNodeType: "App",
                 addNodeName: '',
-                addProductId: 0,
+                addProductId: '',
                 addEnvironment: 0,
                 addDepth: 0,
                 addFatherId: 0,
@@ -314,7 +314,8 @@
                         node_type: this.addNodeType,
                         node_name: this.addNodeName,
                         product_id: this.addProductId,
-                        environment: this.addEnvironment,
+                        product_name: this.addProductName,
+                        environment: this.envSelected,
                         depth: this.addDepth,
                         father_id: this.addFatherId,
                     },
@@ -373,10 +374,20 @@
                         this.addNodeType = "app";
                         this.addFatherId = 0;
                         this.addDepth = 1;
-                        this.addProductId = -1;
+                        this.addProductId = '';
                         this.envSelected = '测试环境';
                         this.addEnvironment = '测试环境';
                         this.addProductName = '';
+                        this.envTypeList = [
+                            {
+                                value: '正式环境',
+                                label: '正式环境'
+                            },
+                            {
+                                value: '测试环境',
+                                label: '测试环境'
+                            }
+                        ];
                         break;
                     case 'module':
                         create_type = 'ip';
@@ -428,6 +439,7 @@
                     axios.AxiosPost({
                         url: 'cmdb/tree/get_prod_list',
                         callback: (res) => {
+                            console.log(res.data.data);
                             this.productList = res.data.data;
                         }
                     });

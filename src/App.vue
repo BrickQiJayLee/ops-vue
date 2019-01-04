@@ -64,13 +64,18 @@
                                 name: '资源池'
                             },
                             {
-                                url: '/cmdb/module_tree',
+                                url: '/cmdb/product_info',
                                 index: '1-2',
+                                name: '业务管理'
+                            },
+                            {
+                                url: '/cmdb/module_tree',
+                                index: '1-3',
                                 name: '业务模型'
                             },
                             {
                                 url: '/cmdb/user_auth',
-                                index: '1-3',
+                                index: '1-4',
                                 name: 'sshkey管理'
                             }
                         ]

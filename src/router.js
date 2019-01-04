@@ -11,6 +11,7 @@ import ScriptHistoryDetail from './ops_job/script_history_detail'
 import ScriptExcutor from './ops_job/script_excutor'
 import CmdbMoudleTree from './cmdb/module_tree'
 import CmdbPool from './cmdb/cmdb_pool'
+import CmdbProductInfo from './cmdb/product_info'
 import CmdbUserAuth from './cmdb/user_auth'
 import DbJobInstance from './db_job/db_instance'
 import DbJobBackup from './db_job/db_backup'
@@ -93,6 +94,11 @@ const router = new Router ({
             path: '/cmdb/module_tree',    //资源目录树
             name: 'cmdb_module_tree',
             component: CmdbMoudleTree,
+        },
+        {
+            path: '/cmdb/product_info',    //业务列表
+            name: 'cmdb_product_info',
+            component: CmdbProductInfo,
         },
         {
             path: '/cmdb/user_auth',
