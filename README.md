@@ -37,3 +37,5 @@ sh build_and_run.sh
 ![新建作业](git_img/edit_script.png)
 - 2. 作业执行态与定时作业
 ![作业执行态与定时作业](git_img/cron_execute.png)
+- 3. 执行输出
+![执行输出](git_img/excuting.png)
