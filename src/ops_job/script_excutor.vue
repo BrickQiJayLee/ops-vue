@@ -30,7 +30,9 @@
                 10.0.0.1 arg1<br>
                 10.0.0.2 arg2<br>
                 使用时，如shell，执行cat $1获取参数<br>
-                目前支持获取的参数有服务注册：--service
+                目前支持获取的参数有 <br>
+                1.获取服务注册：--service <br>
+                2.自定义参数: --custom 自定义参数
                 <i slot="reference" class="el-icon-question"></i>
             </el-popover>
         </el-form-item>
@@ -46,6 +48,7 @@
                 使用需要结合模块分布树：<br>
                 -s app节点名<br>
                 -m module名称<br>
+                -H ip<br>
                 点击获取，将会把ip获取出来，如果选用文件传参，会显示文件内容
                 <i slot="reference" class="el-icon-question"></i>
             </el-popover>
