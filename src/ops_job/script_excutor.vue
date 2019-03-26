@@ -2,10 +2,10 @@
     <el-form
             size="mini"
             ref="form"
-             v-loading="loading"
-             :model="form" label-width="80px">
+            v-loading="loading"
+            :model="form" label-width="80px">
         <el-form-item label="作业选择">
-            <el-select v-model="form.script_job_name" placeholder="请选择作业" >
+            <el-select v-model="form.job_name" placeholder="请选择作业" >
                 <el-option
                         v-for="item in form.task_list"
                         :key="item"
@@ -54,7 +54,7 @@
             </el-popover>
         </el-form-item>
         <div align="center"
-            v-if="Params">
+             v-if="Params">
             <el-table
                     :data="paramData"
                     border
@@ -62,7 +62,7 @@
                 <el-table-column
                         prop="ip"
                         label="ip"
-                width="120%">
+                        width="120%">
                 </el-table-column>
                 <el-table-column
                         prop="params"
@@ -90,7 +90,10 @@
                 isRoot: true,
                 loading: true,
                 form: {
-                    "script_job_name": "",
+                    "task_name": "一次性作业",
+                    "job_name": "",
+                    "tks_data_list": {},
+                    "script_name": "",
                     "is_root": false,
                     "script_args": "",
                     "module_args": "",
@@ -109,11 +112,12 @@
             axios.AxiosPost({
                 url: 'ops_job/script/get_task_list',
                 params: {
-                    "script_job_name": ""
+                    "task_name": "一次性作业",
                 },
                 callback: (res) => {
                     this.loading = false;
-                    this.form.task_list = res.data.data
+                    this.form.task_list = res.data.tks;
+                    this.form.tks_data_list = res.data.data;
                 }
             });
         },
@@ -154,7 +158,7 @@
                 axios.AxiosPost({
                     url: 'ops_job/script/exector_create',
                     params: {
-                        "script_job_name": formData.script_job_name,
+                        "task_name": formData.task_name,
                     },
                     callback: (res) => {
                         this.excutor_craeted_id = res.data.data.history_id;
@@ -164,7 +168,9 @@
                             params: {
                                 "kwargs": JSON.stringify({
                                     "args_type": (this.form.params_type_radio === '2')?"file":"normal",
-                                    "script_job_name": formData.script_job_name,
+                                    "task_name": "一次性作业",
+                                    "job_name": formData.job_name,
+                                    "script_name": '',
                                     "is_root": isRoot,
                                     "script_args": formData.script_args,
                                     "module_args": formData.module_args,

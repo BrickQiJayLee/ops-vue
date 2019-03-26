@@ -8,7 +8,7 @@
             var timestamp = Date.parse(new Date());
             return {
                 script_name: "new_script_" + timestamp + ".sh",
-                script_content: "# new script",
+                script_content: "#!/bin/bash",
                 script_type: "powershell",
                 script_job_name: "新建脚本"
             }

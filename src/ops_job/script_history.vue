@@ -137,9 +137,14 @@
         },
         mounted(){
             let d = new Date();
-            let startTime = (d.getFullYear()) + "-" +
-                (d.getMonth() + 1) + "-" +
-                (d.getDate()) + " " + "00:00:00";
+            let e_time = new Date();
+            e_time.setMinutes(e_time.getMinutes() - 120);
+            let startTime = (e_time.getFullYear()) + "-" +
+                (e_time.getMonth() + 1) + "-" +
+                (e_time.getDate()) + " " +
+                (e_time.getHours()) + ":" +
+                (e_time.getMinutes()) + ":" +
+                (e_time.getSeconds());
             let nowTime = (d.getFullYear()) + "-" +
                 (d.getMonth() + 1) + "-" +
                 (d.getDate()) + " " +
@@ -154,7 +159,7 @@
 <style>
     .detail_css {
         word-break: break-all;
-        overflow-x:auto;
+        overflow-x: auto;
         font-size: 10px;
     }
 </style>

@@ -3,10 +3,10 @@
             size="mini"
             ref="form" :model="form" label-width="100px">
         <el-form-item label="任务名(唯一)">
-            <el-input v-model="form.periodic_task_name"></el-input>
+            <el-input v-model="form.task_name"></el-input>
         </el-form-item>
         <el-form-item label="作业选择">
-            <el-select v-model="form.script_job_name" placeholder="请选择作业">
+            <el-select v-model="form.job_name" placeholder="请选择作业">
                 <el-option
                         v-for="item in form.task_list"
                         :key="item"
@@ -98,15 +98,15 @@
             return {
                 isRoot: true,
                 form: {
-                    "periodic_task_name": this.$route.params.periodic_task_name,
-                    "script_job_name": this.$route.params.script_job_name,
+                    "task_name": this.$route.params.task_name,
+                    "job_name": this.$route.params.job_name,
+                    "script_name": this.$route.params.script_name,
                     "crontab": this.$route.params.crontab,
                     "is_root": this.$route.params.is_root,
                     "script_args": this.$route.params.script_args,
                     "module_args": this.$route.params.module_args,
                     "enabled": this.$route.params.enabled,
                     "task_list": this.$route.params.task_list,
-                    "selected_script_job": this.$route.params.selected_script_job,
                     "args_type": this.$route.params.args_type
                 },
                 taskselect: '',
@@ -156,19 +156,20 @@
                     isRoot = '0';
                 }
                 const h = this.$createElement;
-                console.log(this.$route.params.script_job_name);
+                console.log(this.$route.params.script_name);
                 axios.AxiosPost({
                     url: 'ops_job/script/commitcron',
                     params: {
-                        "periodic_task_name": formData.periodic_task_name,   //新名称
-                        "script_job_name": formData.script_job_name,
+                        "task_name": formData.task_name,   //新名称
+                        "job_name": formData.job_name,
+                        "script_name": formData.script_name,
                         "crontab": formData.crontab,
                         "is_root": isRoot,
                         "script_args": formData.script_args,
                         "module_args": formData.module_args,
                         "args_type": formData.args_type,
                         "enabled": formData.enabled,
-                        "old_name": this.$route.params.periodic_task_name,  //旧名称
+                        "old_name": this.$route.params.task_name,  //旧名称
                         "update": this.$route.params.update
                     },
                     callback: (res) => {
